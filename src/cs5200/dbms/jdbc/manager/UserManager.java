@@ -105,7 +105,7 @@ public class UserManager {
 			statement.setString(3, user.getLastName());
 			statement.setString(4, user.getEmail());
 			statement.setDate(5, user.getDateOfBirth());
-			statement.setString(6, user.getUsername());
+			statement.setString(6, username);
 			statement.executeUpdate();
 		} catch(SQLException e) {
 			e.printStackTrace();
