@@ -136,6 +136,7 @@ public class CastManager {
 			statement.setString(1, newCast.getCharacterName());
 			statement.setInt(2, newCast.getMovieId());
 			statement.setInt(3, newCast.getActorId());
+			statement.setInt(4, castId);
 			statement.executeUpdate();
 		} catch(SQLException e) {
 			e.printStackTrace();
