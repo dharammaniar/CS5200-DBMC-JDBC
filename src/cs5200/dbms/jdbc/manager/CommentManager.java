@@ -133,13 +133,16 @@ public class CommentManager {
 		return comment;
 	}
 	
-	public void updateComment(int commentId, String newComment) {
-		String sql = "update comment set comment = ? where commentId = ? ";
+	public void updateComment(int commentId, Comment newComment) {
+		String sql = "update comment set comment = ?, date = ?, username = ?, movieId = ? where commentId = ? ";
 		try {
 			Connection connection = ds.getConnection();
 			PreparedStatement statement = connection.prepareStatement(sql);
-			statement.setString(1, newComment);
-			statement.setInt(2, commentId);
+			statement.setString(1, newComment.getComment());
+			statement.setDate(2, newComment.getDate());
+			statement.setString(3, newComment.getUsername());
+			statement.setInt(4, newComment.getMovieId());
+			statement.setInt(5, commentId);
 			statement.executeUpdate();
 		} catch(SQLException e) {
 			e.printStackTrace();
